@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tami Lake Art</title>
+    <link rel="icon" type="image/png" href="Images\Icon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Fonts: Playfair Display & Open Sans Condensed -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@700&family=Open+Sans+Condensed:wght@300&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header">
+        <h1 class="header-title">Tami Lake Art</h1>
+    </header>
+    <div  class="flipbook-wrapper">
+   <div id="flipbook" class="flipbook about">
+        <div class="hard">About Me<small>-Tami Lake-</small></div>
+        <div class="hard"></div>
+        <div>
+            <div class="portfolio-page">
+                <img src="Images\TamiLakeHeadshot.jpg" alt="My Headshot" style="max-width: 200px;">
+                <p>I’ve always been drawn to art and all things making.</p>
+                <p>I studied studio art and computer science at the University of Miami, with minors in math and motion pictures — because choosing a singular path has never really been my style. My creative work lives at the intersection of design, storytelling, and hands-on making.</p>
+                <p>I’ve worked as a graphic designer and recently went back to school to study digital animation and visual effects — continuing to explore all corners of the art world.</p>
+            </div>
+        </div>
+        <div>
+            <div class="portfolio-page">
+                <p>I'm definitely happiest when I’m building something from my imagination. During the pandemic, I fell in love with granny hobbies. I taught myself to knit and crochet, and started baking with a much more adventurous spirit. What began as pandemic downtime has grown into a lasting love for creating by hand — and I'd love to grow those hobbies into something more one day.</p>
+                <p>I’m driven by curiosity, craft, and the process of figuring things out — one project at a time. Making, for me, is all about taking a wild idea and shaping it into something thoughtful, beautiful, or just plain fun.</p>
+                <p>I love to learn new things, make new things, and collab with new people on fun projects.</p>
+            </div>    
+        </div>
+
+        <div class="hard"></div>
+        <div class="hard"><small>Got questions, thoughts, or cool ideas?<br>Let’s chat — contact page is your friend.</small></div>
+        </div>
+
+        <!-- The One Reusable Modal -->
+        <div id="modal" class="modal-overlay">
+            <div class="modal-content">
+                <button class="closeModalBtn">&times;</button>
+                <h2 id="modalTitle">Default Title</h2>
+                <p id="modalBody">Default body text goes here.</p>
+            </div>
+        </div>
+</div>
+
+     <main>
+         <div class="library-intro">
+            <span>Click through the above book to turn the pages, or select another book below.</span>
+        </div>
+         <div class="bookshelf-container">
+            <div class="bookshelf-row">
+                <div class="bookshelf single-row" role="navigation" aria-label="Main navigation shelf">
+                    <a class="book book-home" href="index.html" tabindex="0" title="Home">
+                        <img src="images/HomePage.png" alt="Home Book">
+                        <span class="book-label">HOME</span>
+                    </a>
+                    <div class="book blank">
+                        <img src="images/Blank_1.png" alt="">
+                    </div>
+                    <a class="book book-art-portfolio" href="portfolio.html" tabindex="0" title="Art Portfolio">
+                        <img src="images/DigitalPortfolio.png" alt="Art Portfolio Book">
+                        <span class="book-label">DIGITAL PORTFOLIO</span>
+                    </a>
+                    <a class="book book-resume" href="resume.html" tabindex="0" title="Resume">
+                        <img src="images/Resume.png" alt="Resume Book">
+                        <span class="book-label">RESUME</span>
+                    </a>
+                    <a class="book book-about-me current" href="about.html" tabindex="0" title="About Me">
+                        <img src="images/AboutMe.png" alt="About Me Book">
+                        <span class="book-label">ABOUT ME</span>
+                    </a>
+                    <div class="book blank">
+                        <img src="images/Blank_2.png" alt="">
+                    </div>
+                    <a class="book book-crochet-projects" href="crochet.html" tabindex="0" title="Crochet Projects">
+                        <img src="images/CrochetProjects.png" alt="Crochet Projects Book">
+                        <span class="book-label">CROCHET PROJECTS</span>
+                    </a>
+                    <a class="book book-knit-projects" href="knit.html" tabindex="0" title="Knit Projects">
+                        <img src="images/KnittingProjects.png" alt="Knit Projects Book">
+                        <span class="book-label">KNIT PROJECTS</span>
+                    </a>
+                    <a class="book book-baking-recipes" href="recipes.html" tabindex="0" title="Baking Recipes">
+                        <img src="images/BakingRecipes.png" alt="Baking Recipes Book">
+                        <span class="book-label">BAKING RECIPES</span>
+                    </a>
+                    <div class="book blank">
+                        <img src="images/Blank_1.png" alt="">
+                    </div>
+                    <a class="book book-contact-me" href="contact.html" tabindex="0" title="Contact Me">
+                        <img src="images/ContactMe.png" alt="Contact Me Book">
+                        <span class="book-label">CONTACT ME</span>
+                    </a>
+                    <div class="shelf-base"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer">
+        <span>Tami Lake Art</span>
+    </footer>
+   <script src="jquery.js"></script>
+    <script src="turn.js"></script>
+   <script src="script.js"></script>
+   
+   <script>
+    $(".flipbook").turn({
+    width: 1000,
+    height: 720,
+    autoCenter: true
+  });
+   </script>
+</body>
+</html>
+
+
+

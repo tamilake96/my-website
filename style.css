@@ -1,0 +1,993 @@
+body {
+    font-family: 'Open Sans Condensed', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: #F5F5F7;
+    display: flex;
+    flex-direction: column;
+}
+
+.site-header {
+    width: 100%;
+    background: #7A3C99;
+    padding: 0;
+    margin: 0;
+}
+.header-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 2px;
+    padding: 32px 0 25px 0;
+    margin: 0;
+}
+
+.profile-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 36px;
+    margin-bottom: 24px;
+}
+
+.profile-image-frame {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 5px solid #7A3C99;
+    box-shadow: 0 6px 24px rgba(122,60,153,0.10);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 16px;
+}
+.profile-image-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+}
+
+.profile-blurb-box {
+    background: none;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 24px 0 18px 0;
+    max-width: 75vw;
+    width: 75vw;
+    text-align: center;
+    font-size: 1.3rem;
+    color: #111;
+    margin-bottom: 30px;
+    border: none;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: 400;
+}
+
+.library-intro {
+    text-align: center;
+    margin-bottom: 2px;
+    margin-top: 0;
+}
+.library-intro span {
+    font-family: 'Open Sans Condensed', Arial, sans-serif;
+    font-weight: bold;
+    color: #7A3C99;
+    font-size: 1.25rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    display: block;
+}
+
+.bookshelf-container {
+    margin: 0 auto;
+    padding-bottom: 40px;
+    padding-top: 40px;
+    position: relative;
+    width: 100%;
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow-y:visible;
+    overflow: visible !important;
+
+}
+
+.bookshelf-row {
+    width: 90%;
+    margin-bottom: 36px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    align-self: center;
+    overflow: visible;
+    overflow-y: visible;
+}
+
+/* --- Bookshelf & Books --- */
+.bookshelf.single-row {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 3px;
+    position: relative;
+    min-height:unset;
+    margin-bottom: 10px;
+    padding: 10px 16px 50px 16px;
+    position: relative;
+    /* Remove width constraint for desktop, will set for mobile below */
+    box-sizing: border-box;
+    overflow-x: auto;
+    overflow-y: visible;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+.bookshelf.single-row::-webkit-scrollbar {
+    display: none;
+}
+
+.book, .book.blank {
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    margin-bottom: 0;
+    padding: 0;
+    background: none;
+    border: none;
+    box-shadow: none;
+    overflow: visible;
+    transition: transform 0.18s, box-shadow 0.18s;
+    width: auto;
+    height: 300px;
+    z-index: 1;
+    filter: drop-shadow(0 4px 2px rgba(0,0,0,.2));
+}
+
+.book img, .book.blank img {
+    display: block;
+    width: auto;
+    height: 300px;
+    object-fit: contain;
+    margin: 0;
+    padding: 0;
+}
+
+.book-label {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(-90deg);
+    font-family: 'Open Sans Condensed', Arial, sans-serif;
+    font-weight: normal;
+    color: #111;
+    font-size: 1.6rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    pointer-events: none;
+    white-space: nowrap;
+    user-select: none;
+    text-align: center;
+    max-width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 2px;
+    line-height: 1.1;
+    overflow: visible;
+    text-overflow: ellipsis;
+}
+.book.blank .book-label {
+    display: none;
+}
+
+.book:hover:not(.blank),
+.book:focus:not(.blank) {
+    transform: perspective(800px) rotateX(-15deg) scale(1.03) translateZ(10px);
+    z-index: 9999 !important;
+    cursor: pointer;
+    filter: drop-shadow(0 10px 6px rgba(0,0,0,.4));
+}
+.book.blank,
+.book.blank:hover,
+.book.blank:focus {
+    transform: none !important;
+    cursor: default !important;
+    z-index: 1;
+    pointer-events: none !important;
+}
+
+.shelf-base {
+    background: #9c6644;
+    border-radius: 0;
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 0;
+    box-shadow: 0 4px 14px rgba(100,60,20,0.12);
+    pointer-events: none;
+    width: 100%;
+    max-width: 1200px;
+    height: 60px;
+    bottom:0px;
+}
+
+.site-footer {
+    width: 100%;
+    background: #7A3C99;
+    color: #fff;
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    padding: 18px 0 12px 0;
+    margin-top: 10px;
+    flex-shrink: 0;
+    position: fixed-bottom;
+}
+
+
+.book.current {
+    transform: translateY(-30px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    opacity: .02;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.custom-button {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #7A3C99;
+  color: white;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 1.1rem;
+  text-decoration: none;
+  border: none;
+  border-radius: 50px;
+  box-shadow: inset 0 -4px 6px rgba(0, 0, 0, 0.4); /* inner bottom shadow */
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.custom-button:hover {
+  box-shadow: inset 0 -5px 8px rgba(0, 0, 0, 0.5);
+  transform: translateY(-1px);
+}
+
+.custom-button:active {
+  box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.5); /* simulate press from top */
+  transform: translateY(2px);
+}
+
+/*FLIP BOOK*/
+.flipbook-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  padding: 10px;
+  box-sizing: border-box;
+  max-width: 100%;
+  position: relative;      /* for stacking */
+  overflow: visible;       /* allow flipping shadows and transforms */
+  margin-bottom: 20px;     /* prevent overlap below */
+  height: auto;            /* let height be flexible */
+  max-height: none;        /* unset max-height here */
+}
+
+.flipbook {
+  max-height: 80vh;        /* restrict flipbook height */
+  height: auto;
+  width: auto;
+  overflow: visible;
+  position: relative;
+  z-index: 11;             /* above wrapper */
+}
+
+
+.flipbook .hard {
+    color: #000;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+/*Book Colors*/
+.recipes .hard {
+    background: #BFA8A0 !important;
+}
+
+.resume .hard {
+    background: #993C64 !important;
+}
+
+.portfolio .hard{
+    background: #F2D9E6 !important;
+}
+
+.about .hard{
+    background: #63C0D0 !important;
+}
+
+/*FLIPBOOK*/
+.flipbook .hard small{
+	font-style: italic;
+	font-weight: lighter;
+    font-size: clamp(12px, 1vw, 60px);
+}
+
+.flipbook .page {
+    background: white;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+    gap: 6px;
+    border: 1px solid rgba(0, 0, 0, 0.11);
+}
+
+.page img{
+	width: 70%;
+	object-fit: cover;
+	margin: 0;
+}
+
+.flipbook .page h1,
+.flipbook .page h2,
+.flipbook .page h3,
+.flipbook .page p,
+.flipbook .page button {
+    font-size: clamp(14px, 1.8vw, 40px);
+    text-align: center;
+    padding: 0;
+}
+
+.flipbook .page button.custom-button {
+    font-size: clamp(12px, 1.5vw, 32px);
+    width: 80%;
+    max-width: 400px;
+    padding: 10px; /* vertical and horizontal padding */
+    box-sizing: border-box;
+    display: flex;               /* Use flexbox for perfect centering */
+    justify-content: center;     /* horizontal center */
+    align-items: center;         /* vertical center */
+    height: auto;               /* height adjusts based on content */
+    text-align: center;          /* fallback */
+    border-radius: 50px;
+    background-color: #7A3C99;
+    color: white;
+    border: none;
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-top: 1.5vw;
+}
+
+/*Table of Contents*/
+.flipbook-toc ul{
+    list-style: none; /* removes bullets/dots */
+    padding: 0;
+    margin: 0;
+    font-size: clamp(12px, 1.8vw, 32px);
+    text-align: center;
+}
+
+.flipbook-toc li,
+.flipbook-toc a {
+    text-decoration: none;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+    color: #333;
+}
+
+/*RESUME PAGES*/
+.resume-entry {
+    margin: 10px;
+}
+
+.resume-entry h1 {
+    font-family: 'Playfair Display', serif;
+    border-bottom: 2px solid #7A3C99;
+    color: #7A3C99;
+}
+
+.resume-entry h2{
+    padding: 0px;
+    margin: 0px;
+    font-weight: normal;
+}
+.resume-entry h4 {
+
+    padding: 0px;
+    margin: 0px;
+    font-weight: normal;    
+    text-align: center;
+    color: #7A3C99;
+}
+
+.resume-entry li{
+    font-size: clamp(10px, 2vw, 18px);
+}
+
+.pdf-button{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0px auto 30px;
+    max-width: 400px;
+}
+
+.hard a {
+    text-decoration: none;
+    color: #000;
+}
+
+/*PORTFOLIO PAGES*/
+.flipbook .page .portfolio-page {
+  margin: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flipbook .page .portfolio-page p{
+  font-size: clamp(10px, 1.25vw, 16px) !important;
+  text-align: justify;
+  text-align-last: center;
+}
+
+.flipbook .page .portfolio-page h3{
+    font-size: clamp(10px, 1.25vw, 16px) !important;
+    font-weight: normal;
+}
+
+.flipbook .page .portfolio-page h2{
+    font-size: clamp(10px, 1.5vw, 32px) !important;
+}
+
+.portfolio-image{
+    width: 90% !important;
+    max-width: 500px;
+    height: auto;
+    max-height: 500px;
+    cursor: zoom-in;
+    transition: transform 0.2s;
+    margin: 10px;
+}
+
+.portfolio-image:hover{
+    transform: scale(1.02);
+}
+
+.app-mock{
+     width: 90%;
+    max-width: 150px !important;     /* adjust as needed */
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+}
+
+icon-logo{
+    max-width: 80px !important;
+}
+
+.one-grid{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 10px;
+    max-width: 700px;
+    width: 100%;
+    margin: 10px auto;
+}
+
+.two-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 equal columns */
+    grid-template-rows: auto auto; /* for the rows */
+    gap: 10px; /* spacing between images */
+    max-width: 700px; /* optional: limit container width */
+    width: 100%;
+    margin: 10px auto; /* center container */
+}
+
+.three-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 10px;
+    max-width: 700px;
+    width: 100%;
+    margin: 10px auto;
+}
+
+.portfolio-image:not(.top-image) {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+}
+
+.portfolio-image.grid-bottom{
+    width: 50%;
+    max-width: 200px;
+}
+
+.tall-scroll-container{
+ display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  gap: 10px;
+  padding: 10px;
+  height: 80vw; 
+  max-height: 600px;   
+  width: 40vw;    
+  max-width: 400px;
+  margin-left: calc(-1em); /* Cancel out the parent container’s left margin */
+  margin-right: calc(-1em); /* Cancel out right margin */
+  box-sizing: border-box;
+}
+
+.tall-scroll-container img{
+    flex: 0 0 auto;
+    height: 100%;
+    max-height: 600px !important;
+    width: auto !important;
+    object-fit: cover;
+    scroll-snap-align: start;
+}
+
+/*CONTACT ME PAGE FORM*/
+/* CONTACT FORM STYLES */
+.contact-form-container {
+    max-width: 600px;
+    width: 90%;
+    margin: 40px auto;
+    padding: 32px 24px;
+    background-color: #fff;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    font-family: 'Open Sans Condensed', Arial, sans-serif;
+    color: #333;
+}
+
+.contact-form-container h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    text-align: center;
+    color: #7A3C99;
+    margin-bottom: 24px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 6px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #7A3C99;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: #7A3C99;
+    box-shadow: 0 0 0 2px rgba(122, 60, 153, 0.2);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.error-message {
+    color: #cc0000;
+    font-size: 0.9rem;
+    margin-top: 4px;
+    min-height: 1em;
+}
+
+.submit-button {
+    background-color: #7A3C99;
+    color: #fff;
+    border: none;
+    padding: 14px 20px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-family: 'Open Sans Condensed', sans-serif;
+    letter-spacing: 1px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+    box-shadow: inset 0 -4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.submit-button:hover {
+    background-color: #5c2b78;
+    transform: translateY(-1px);
+    box-shadow: inset 0 -5px 8px rgba(0, 0, 0, 0.4);
+}
+
+.submit-button:active {
+    background-color: #4e2464;
+    transform: translateY(2px);
+    box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.4);
+}
+
+/*CONTACT FORM*/
+ .iframe-container {
+  width: 100%;
+  max-width: 640px;  /* max width of iframe */
+  margin: 0 auto;    /* center horizontally */
+}
+
+.iframe-container iframe {
+  width: 100%;       /* responsive width */
+  height: 900px;     /* fixed height, Google Forms needs a set height */
+  border: none;
+}
+
+
+
+
+/*LIGHTBOX*/
+
+/* Lightbox overlay */
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.85);
+  justify-content: center;
+  align-items: center;
+}
+
+/* Lightbox image */
+.lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  transition: transform 0.3s;
+}
+
+/* Show cursor to indicate closable */
+.lightbox {
+  cursor: zoom-out;
+}
+
+/*RECIPE PAGES*/
+
+.recipe-image{
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.two-column-list {
+  column-count: 2;
+  column-gap: 20px; /* space between columns */
+  list-style-position: inside; /* optional, keeps bullets aligned nicely */
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.modal-overlay.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.modal-content {
+  background: white;
+  padding: 24px;
+  border-radius: 8px;
+  max-width: 500px;
+  width: 90%;
+  position: relative;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  font-weight: bold;
+  color: #555;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  color: #000;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .bookshelf.single-row {
+        padding: 10px 16px 60px 16px; /* match default */
+        gap: 3px;
+        min-height: unset; /* match default */
+    }
+
+    .book, .book.blank {
+        height: 300px; /* match default */
+    }
+
+    .book img, .book.blank img {
+        height: 300px; /* match default */
+    }
+
+    .book-label {
+        font-size: 1.8rem; /* match default */
+        max-width: 80%;
+        padding: 10px 2px;
+    }
+
+    .shelf-base {
+        height: 60px; /* match default */
+        max-width: 1200px;
+        width: 98%;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 10px;
+    }
+
+    .profile-blurb-box {
+        font-size: 1.3rem; /* match default */
+        max-width: 75vw;
+        width: 75vw;
+    }
+
+     /*FLIP BOOK*/
+
+  
+   
+}
+
+@media (max-width: 900px) {
+    .bookshelf.single-row {
+        padding: 10px 16px 60px 16px; /* match default */
+        gap: 3px;
+        min-height: unset;
+    }
+
+    .book, .book.blank {
+        height: 250px; /* match default */
+    }
+
+    .book img, .book.blank img {
+        height: 250px; /* match default */
+    }
+
+    .book-label {
+        font-size: 1.6rem; /* match default */
+        max-width: 80%;
+        padding: 10px 2px;
+    }
+
+    .shelf-base {
+        height: 60px; /* match default */
+        max-width: 1200px;
+        width: 98%;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 10px;
+    }
+
+    .profile-blurb-box {
+        font-size: 1.3rem; /* match default */
+        max-width: 75vw;
+        width: 75vw;
+    }
+
+    /*RESUME*/
+   
+
+}
+
+@media (max-width: 750px) {
+    .profile-section {
+        margin-top: 36px;
+        margin-bottom: 24px;
+    }
+
+    .bookshelf.single-row {
+        padding: 10px 16px 60px 16px; /* match default */
+        gap: 3px;
+        min-height: unset;
+    }
+
+    .book, .book.blank {
+        height: 180px;
+    }
+
+    .book img, .book.blank img {
+        height: 180px;
+    }
+
+    .book-label {
+        font-size: 1.2em; /* match default */
+        max-width: 80%;
+        padding: 10px 2px;
+    }
+
+    .shelf-base {
+       height: 60px; /* match default */
+        max-width: 1200px;
+        width: 98%;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 10px;
+    }
+
+    .profile-blurb-box {
+        font-size: 1.3rem;
+        max-width: 75vw;
+        width: 75vw;
+        padding: 24px 0 18px 0;
+    }
+
+    /*FLIP BOOK*/
+
+     /*RESUME*/
+       .resume-entry h1 {
+        font-size: 1.4rem;
+    }
+
+    .resume-entry h2 {
+        font-size: 1rem;
+    }
+
+    .resume-entry h4 {
+        font-size: 0.85rem;
+    }
+
+    .resume-image-box {
+        width: 60px;
+        height: 60px;
+    }
+
+    .pdf-button {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 520px) {
+    .header-title { 
+        font-size: 1.3rem; 
+        padding: 16px 0 10px 0; 
+    } 
+    .profile-image-frame { 
+        width: 78px; 
+        height: 78px; 
+    }
+    .profile-blurb-box { 
+        font-size: 1rem; 
+        padding: 12px 2px 10px 2px; 
+        max-width: 98vw; 
+        width: 98vw; 
+        margin-bottom: 20px; 
+    } 
+    .bookshelf.single-row { 
+        flex-wrap: nowrap; 
+        gap: 1vw; 
+        padding: 0.5vw 1vw 3vw 1vw; 
+        min-height: unset; 
+    } 
+    .book, .book.blank { 
+        height: 115px; /* Bigger books for increased font size */
+        width: auto; 
+        max-width: 90vw; 
+        min-width: 0; 
+        margin-bottom: 0; 
+    } 
+    .book img, .book.blank img { 
+        height: 115px; 
+        width: auto; 
+        max-width: 90vw; 
+        object-fit: contain; 
+    }
+    .book-label { 
+        font-size: .88rem; /* Increased for legibility on small screens */ 
+        font-weight: normal; /* Remove bold */ 
+        max-width: 98%; 
+        letter-spacing: 1px; 
+        padding: 10px 2px; 
+    } 
+    .site-footer { 
+        font-size: 0.85rem; 
+        padding: 12px 0 8px 0; 
+    } 
+    .shelf-base { 
+        height: 6vw; 
+        max-width: 98vw; 
+        width: 98vw; 
+        left: 50%; 
+        transform: translateX(-50%); 
+        bottom: -1vw; 
+    }
+    
+    /*FLIP BOOK*/
+    .flipbook-wrapper {
+        margin-top: 10px;
+        height: auto !important;
+        min-height: 200px;
+        max-height: 40vh;
+    }
+
+    .flipbook{
+        max-height: 40vh;
+    }
+
+    .flipbook .page button.custom-button {
+       font-size: clamp(10px, 3vw, 18px);
+       width: 80%;          
+       max-width: none;    
+       padding: 0.5em 1.5vw;
+       border-radius: 40px; 
+       height: 5%;
+       margin-top: 0vw;
+    }
+
+    /*RESUME*/
+       .resume-entry {
+        padding: 5px;
+    }
+
+    .resume-entry h1 {
+        font-size: 1.2rem;
+    }
+
+    .resume-entry h2,
+    .resume-entry h4 {
+        font-size: 0.8rem;
+    }
+}
+
+
